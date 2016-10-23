@@ -1,5 +1,6 @@
 package com.m.app.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,14 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by datutu on 16/10/20.
  */
 
 public abstract  class FLazy extends FBase {
+    private View FBaseView;
+    private Activity FBaseActivity;
     private boolean isFirstVisible = true;
     private boolean isFirstInvisible = true;
     private boolean isPrepared;
+
 
 //获取参数
      protected abstract void create(Bundle Mybundle);
@@ -44,13 +50,16 @@ public abstract  class FLazy extends FBase {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       FBaseActivity= getActivity();
         create(getArguments());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (getContentViewLayoutID() != 0) {
-            return inflater.inflate(getContentViewLayoutID(), null);
+            FBaseView=inflater.inflate(getContentViewLayoutID(), null);
+            ButterKnife.bind(this,FBaseView);
+            return FBaseView;
         } else {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
