@@ -1,20 +1,22 @@
 package com.m.app.ui.fragment.fmain;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.m.app.R;
+import com.m.app.ui.activity.Test.ATestRxJava;
 import com.m.app.ui.fragment.FLazy;
-
-import java.util.Observable;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import rx.Observable;
 import rx.Subscriber;
 
 /**
@@ -28,7 +30,7 @@ public class FFrist extends FLazy {
     Button fragmentFristBt;
 //被观察者********************
 
-    rx.Observable.OnSubscribe mySubscribe = new rx.Observable.OnSubscribe<String>() {
+    Observable.OnSubscribe mySubscribe = new Observable.OnSubscribe<String>() {
 
         @Override
         public void call(Subscriber<? super String> subscriber) {
@@ -36,9 +38,9 @@ public class FFrist extends FLazy {
             subscriber.onCompleted();
         }
     };
-    rx.Observable observable = rx.Observable.create(mySubscribe);
+    Observable observable = Observable.create(mySubscribe);
     //观察者********************此处用Observer的抽象实现类处理Ò
-    rx.Subscriber<String> mysubscriber = new rx.Subscriber<String>() {
+    Subscriber<String> mysubscriber = new Subscriber<String>() {
         @Override
         public void onCompleted() {
 
@@ -54,6 +56,8 @@ public class FFrist extends FLazy {
 
         }
     };
+    @BindView(R.id.fragment_frist_rxjava_bt)
+    Button fragmentFristRxjavaBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -98,12 +102,14 @@ public class FFrist extends FLazy {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
-        ButterKnife.bind(this, rootView);
-        return rootView;
+
+    @OnClick(R.id.fragment_frist_rxjava_bt)
+    public void onClick(View V) {
+        switch (V.getId()){
+            case R.id.fragment_frist_rxjava_bt:
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ATestRxJava.class));
+                break;
+        }
     }
 }

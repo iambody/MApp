@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 
 public abstract  class FLazy extends FBase {
     private View FBaseView;
-    private Activity FBaseActivity;
+    protected Activity FBaseActivity;
     private boolean isFirstVisible = true;
     private boolean isFirstInvisible = true;
     private boolean isPrepared;
