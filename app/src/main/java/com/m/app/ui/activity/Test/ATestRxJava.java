@@ -3,6 +3,7 @@ package com.m.app.ui.activity.Test;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,7 +11,12 @@ import android.widget.Toast;
 
 import com.m.app.R;
 import com.m.app.ui.activity.ABase;
+import com.m.app.ui.module.test.BCourse;
+import com.m.app.ui.module.test.BStudent;
 import com.m.app.ui.utils.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,6 +25,7 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.functions.Action1;
+import rx.functions.Func1;
 
 /**
  * Created by datutu on 2016/10/26.
@@ -91,8 +98,12 @@ public class ATestRxJava extends ABase {
             Toast.makeText(ATestRxJava.this, s, Toast.LENGTH_LONG).show();
         }
     };
+    //**************打印学生Bean的名字*************************************************************
+
+    BStudent[] students = {new BStudent("网=网页"), new BStudent("小米"), new BStudent("立刻")};
 
 
+    //*******************************************************************************
     @BindView(R.id.testrxjava_test_button)
     Button testrxjavaTestButton;
     @BindView(R.id.testrxjava_test_iv)
@@ -106,8 +117,61 @@ public class ATestRxJava extends ABase {
         BaseActivity = this;
         JustObservable.subscribe(MyAbObserver);
         MyObservable.subscribe(myaction1);
-        Utils.SetIv(this,testrxjavaTestIv,R.mipmap.test1);
+        Utils.SetIv(this, testrxjavaTestIv, R.mipmap.test1);
+        //测试循环开始打印**********************************************************************************
+//        Observable.from(students).map(new Func1<BStudent, String>() {
+//            @Override
+//            public String call(BStudent bStudent) {
+//                return bStudent.getName();
+//            }
+//        }).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(String r) {
+//                Log.i("teststaudentrxjava", r + "/n");
+//            }
+//        });
+        //测试FlatMap开始循环**************************************************
+        List<BCourse> c1 = new ArrayList<>();
+        c1.add(new BCourse("第一个语文"));
+        c1.add(new BCourse("第一个英语"));
+        List<BCourse> c2 = new ArrayList<>();
+        c2.add(new BCourse("第二个数学"));
+        c2.add(new BCourse("第二个物理"));
 
+
+        BStudent[] studens = {new BStudent("第一个", c1), new BStudent("第二个", c2)};
+
+        Observable.from(studens).flatMap(new Func1<BStudent, Observable<BCourse>>() {
+            @Override
+            public Observable<BCourse> call(BStudent bStudents) {
+                return Observable.from(bStudents.getMyCourse());
+            }
+        }).subscribe(new Subscriber<BCourse>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BCourse r) {
+                Log.i("flatmap测试", r.getCourseName());
+            }
+        });
     }
 
     @OnClick(R.id.testrxjava_test_button)
