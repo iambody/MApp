@@ -5,13 +5,17 @@ import android.util.Log;
 import com.m.app.ui.interf.Test.ITest;
 import com.squareup.okhttp.ResponseBody;
 
+import java.io.IOException;
+
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -36,21 +40,73 @@ public class NHttpRx {
         ).subscribeOn(Schedulers.io())////这个必须写，否则会报network main thread异常
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseBody>() {
-            @Override
-            public void onCompleted() {
+                    @Override
+                    public void onCompleted() {
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(ResponseBody responseBody) {
+                    @Override
+                    public void onNext(ResponseBody responseBody) {
 
-            }
-        });
+                    }
+                });
 
     }
+
+    //直接用RxJava中的map进行反馈消息转换  ResponseBody====》String
+
+    public void Rxjava_map_test() {
+        CallAdapter.Factory myFactory = RxJavaCallAdapterFactory.create();
+        Retrofit myretrofit = new Retrofit.Builder().baseUrl("www.baicu.com").addCallAdapterFactory(myFactory).build();
+
+        ITest myservice = myretrofit.create(ITest.class);
+        myservice.getuses("93010").doOnNext(new Action1<ResponseBody>() {
+            @Override
+            public void call(ResponseBody responseBody) {
+
+            }
+        }).flatMap(new Func1<ResponseBody, Observable<?>>() {
+            @Override
+            public Observable<?> call(ResponseBody responseBody) {
+                String json = "";
+                try {
+                    json = responseBody.string();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Observable<String> oo = Observable.just(json);
+                oo.map(new Func1<String, String>() {
+                    @Override
+                    public String call(String s) {
+                        return s + "我的标记";
+                    }
+                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+
+                    }
+                });
+                return oo;
+            }
+
+        }).subscribe();
+
+    }
+
+
 }
