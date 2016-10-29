@@ -14,6 +14,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by datutu on 2016/10/28.
@@ -44,5 +45,11 @@ public interface IUser {
     //设置是get请求还是post请求
     Call<ResponseBody> BUsett (@Query("v") String v, @Query("client") String client, @Query("userId") String userId, @Query("minId") String minId, @Query("max") String max);
 
+    @GET("SSSS")
+    Call<BUser>GetMyTestUser(@Query("userphone") String userphone);
 
+   @GET("index.php?")
+    Observable<ResponseBody>GetRxJavaUser(@Query("tn") String tn);
+//    @GET("")
+//    Observable<String>GetRxJavaUser();
 }

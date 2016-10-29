@@ -3,6 +3,7 @@ package com.m.app.ui.utils.Net.rxtest;
 import android.util.Log;
 
 import com.m.app.ui.interf.Test.ITest;
+import com.m.app.ui.interf.retrofit.IUser;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
@@ -10,9 +11,11 @@ import java.io.IOException;
 import retrofit2.CallAdapter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Scheduler;
 import rx.Subscriber;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
@@ -104,7 +107,66 @@ public class NHttpRx {
                 return oo;
             }
 
-        }).subscribe();
+        }).subscribe(new Subscriber<Object>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Object o) {
+
+            }
+        });
+
+    }
+
+    //*****************OKHTTP+RXJava***********************************
+    public  static void OkNet() {
+        Retrofit myretrRetrofit = new Retrofit.Builder().baseUrl("https://www.baidu.com/").addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
+
+        IUser mIUserService = myretrRetrofit.create(IUser.class);
+
+
+        mIUserService.GetRxJavaUser("monline_3_dg").doOnNext(new Action1<ResponseBody>() {
+            @Override
+            public void call(ResponseBody responseBody) {
+
+            }
+        }).map(new Func1<ResponseBody, String>() {
+            @Override
+            public String call(ResponseBody s) {
+                String aaa="";
+                try {
+                    aaa="我获取百度的数据==》" + s.string();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return aaa;
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
+            @Override
+            public void onCompleted() {
+                Log.i("netstr","onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i("netstr", e.getMessage());
+            }
+
+            @Override
+            public void onNext(String s) {
+                Log.i("netstr", s);
+            }
+        });
+
 
     }
 
