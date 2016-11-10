@@ -13,6 +13,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -36,7 +37,7 @@ public interface IUser {
     //post请求 @Multipart,@Part使用
     @Multipart
     @POST("login2")
-    Call<BUser> Login2(@Part("userid") String userid, @Part("userage") String userage);
+    Call<BUser> Login2(@Path("userid") String userid, @Path("userage") String userage);
 
 
     //*********************************************

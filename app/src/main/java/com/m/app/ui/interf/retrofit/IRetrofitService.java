@@ -14,4 +14,9 @@ public interface IRetrofitService {
     @GET("basil2style")
     Call<ResponseBody> GetTestStr();
 
+
+
+
+
+
 }
