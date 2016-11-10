@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.m.app.R;
+import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
 import com.m.app.ui.fragment.FLazy;
 
@@ -25,9 +25,12 @@ import rx.Subscriber;
 
 public class FFrist extends FLazy {
 
-
+    @BindView(R.id.fragment_frist_rxjava_bt)
+    Button fragmentFristRxjavaBt;
     @BindView(R.id.fragment_frist_bt)
     Button fragmentFristBt;
+    @BindView(R.id.fragment_frist_rxjava_net_bt)
+    Button fragmentFristRxjavaNetBt;
 //被观察者********************
 
     Observable.OnSubscribe mySubscribe = new Observable.OnSubscribe<String>() {
@@ -56,8 +59,7 @@ public class FFrist extends FLazy {
 
         }
     };
-    @BindView(R.id.fragment_frist_rxjava_bt)
-    Button fragmentFristRxjavaBt;
+
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -66,7 +68,6 @@ public class FFrist extends FLazy {
 
     @Override
     protected int getContentViewLayoutID() {
-
         return R.layout.fragment_main_frist;
     }
 
@@ -103,13 +104,19 @@ public class FFrist extends FLazy {
     }
 
 
-
-    @OnClick(R.id.fragment_frist_rxjava_bt)
+    @OnClick({R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt})
     public void onClick(View V) {
-        switch (V.getId()){
+        switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
                 FBaseActivity.startActivity(new Intent(FBaseActivity, ATestRxJava.class));
                 break;
+            case R.id.fragment_frist_rxjava_net_bt://获取网络数据
+
+
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ATestRetorofit.class));
+                break;
         }
     }
+
+
 }

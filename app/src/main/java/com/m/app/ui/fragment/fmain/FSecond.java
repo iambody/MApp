@@ -47,7 +47,7 @@ public class FSecond extends FLazy {
     protected void initViewsAndEvents(View view) {
         ButterKnife.bind(this, FBaseView);
         Log.i("netstr","开始请求");
-        NHttpRx.OkNet();
+//        NHttpRx.OkNet();
     }
 
     @Override
