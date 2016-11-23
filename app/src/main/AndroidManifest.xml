@@ -35,6 +35,9 @@
         <activity
             android:name=".ui.activity.Test.AFragmentNavigator"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.ANavigationView"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

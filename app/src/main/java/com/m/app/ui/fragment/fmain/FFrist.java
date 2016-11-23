@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.m.app.R;
 import com.m.app.ui.activity.Test.AFragmentNavigator;
+import com.m.app.ui.activity.Test.ANavigationView;
 import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
@@ -67,6 +68,8 @@ public class FFrist extends FLazy {
 
         }
     };
+    @BindView(R.id.fragment_frist_navigationview_bt)
+    Button fragmentFristNavigationviewBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -111,7 +114,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_navigationview_bt,R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -126,8 +129,12 @@ public class FFrist extends FLazy {
             case R.id.fragment_frist_fragmentnavigator_bt://FragmentNavigator测试
                 FBaseActivity.startActivity(new Intent(FBaseActivity, AFragmentNavigator.class));
                 break;
+            case R.id.fragment_frist_navigationview_bt://侧滑navigationview
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ANavigationView.class));
+                break;
         }
     }
+
 
 
 }

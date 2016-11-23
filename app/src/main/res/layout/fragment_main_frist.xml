@@ -5,38 +5,60 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/frist_fragment" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/fragment_frist_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试lambda" />
-
-    <Button
-        android:id="@+id/fragment_frist_rxjava_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试RXJava" />
-
-    <Button
-        android:id="@+id/fragment_frist_rxjava_net_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试Retrofit获取数据" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
-    <Button
-        android:id="@+id/fragment_frist_qiehuan_net_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试切换SwipeToLoadLayout" />
-    <Button
-        android:id="@+id/fragment_frist_fragmentnavigator_bt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试切换FragmentNavigator" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frist_fragment" />
+
+            <Button
+                android:id="@+id/fragment_frist_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试lambda" />
+
+            <Button
+                android:id="@+id/fragment_frist_rxjava_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试RXJava" />
+
+            <Button
+                android:id="@+id/fragment_frist_rxjava_net_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试Retrofit获取数据" />
+
+
+            <Button
+                android:id="@+id/fragment_frist_qiehuan_net_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="测试切换SwipeToLoadLayout" />
+
+            <Button
+                android:id="@+id/fragment_frist_fragmentnavigator_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fragment切换管理FragmentNavigator" />
+
+
+            <Button
+                android:id="@+id/fragment_frist_navigationview_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="侧滑NavigationView" />
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
