@@ -3,4 +3,6 @@
     <string name="frist_fragment">第一个fragment</string>
     <string name="secondfragment">第二个fragment</string>
     <string name="three_fragment">第三个fragment</string>
+    <string name="loading">加载更多</string>
+    <string name="frashing">刷新</string>
 </resources>

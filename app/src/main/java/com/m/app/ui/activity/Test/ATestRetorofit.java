@@ -45,7 +45,7 @@ public class ATestRetorofit extends ABase {
 
     //请求网络1
     private void BeginRetrofitNet() {
-        Retrofit mRetrofit = new Retrofit.Builder().baseUrl("https://api.github.com/users/").build();
+        Retrofit mRetrofit = new Retrofit.Builder().baseUrl("http://dev.vt.api.v-town.cn").build();
         IRetrofitService mIRetrofitService = mRetrofit.create(IRetrofitService.class);
 
         Call<ResponseBody> call = mIRetrofitService.GetTestStr();

@@ -29,6 +29,12 @@
         <activity
             android:name=".ui.activity.Test.ATestRetorofit"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.ASwipeToLayout"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.AFragmentNavigator"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

@@ -27,4 +27,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="测试Retrofit获取数据" />
+
+
+    <Button
+        android:id="@+id/fragment_frist_qiehuan_net_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试切换SwipeToLoadLayout" />
+    <Button
+        android:id="@+id/fragment_frist_fragmentnavigator_bt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="测试切换FragmentNavigator" />
 </LinearLayout>
