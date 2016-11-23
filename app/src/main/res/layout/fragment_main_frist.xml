@@ -57,6 +57,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="侧滑NavigationView" />
+
+
+            <Button
+                android:id="@+id/fragment_frist_glide_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="goole图片加载框架Glide" />
+            <Button
+                android:id="@+id/fragment_frist_realm_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Realm数据库框架" />
+            <Button
+                android:id="@+id/fragment_frist_blockcanary_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blockcanary--UI线程阻塞监控" />
+
+
         </LinearLayout>
     </ScrollView>
 

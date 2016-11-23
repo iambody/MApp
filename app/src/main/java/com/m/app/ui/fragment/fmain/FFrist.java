@@ -10,7 +10,9 @@ import android.widget.Toast;
 
 import com.m.app.R;
 import com.m.app.ui.activity.Test.AFragmentNavigator;
+import com.m.app.ui.activity.Test.AGlide;
 import com.m.app.ui.activity.Test.ANavigationView;
+import com.m.app.ui.activity.Test.ARealm;
 import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
@@ -39,7 +41,10 @@ public class FFrist extends FLazy {
     @BindView(R.id.fragment_frist_fragmentnavigator_bt)
     Button fragmentFristFragmentnavigatorBt;
 
-
+    @BindView(R.id.fragment_frist_navigationview_bt)
+    Button fragmentFristNavigationviewBt;
+    @BindView(R.id.fragment_frist_glide_bt)
+    Button fragmentFristGlideBt;
 //被观察者********************
 
     Observable.OnSubscribe mySubscribe = new Observable.OnSubscribe<String>() {
@@ -68,8 +73,9 @@ public class FFrist extends FLazy {
 
         }
     };
-    @BindView(R.id.fragment_frist_navigationview_bt)
-    Button fragmentFristNavigationviewBt;
+    @BindView(R.id.fragment_frist_realm_bt)
+    Button fragmentFristRealmBt;
+
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -114,7 +120,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_navigationview_bt,R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -132,9 +138,14 @@ public class FFrist extends FLazy {
             case R.id.fragment_frist_navigationview_bt://侧滑navigationview
                 FBaseActivity.startActivity(new Intent(FBaseActivity, ANavigationView.class));
                 break;
+            case R.id.fragment_frist_glide_bt://Glide 图片框架
+                FBaseActivity.startActivity(new Intent(FBaseActivity, AGlide.class));
+                break;
+            case R.id.fragment_frist_realm_bt:
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ARealm.class));
+                break;
         }
     }
-
 
 
 }

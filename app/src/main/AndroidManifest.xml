@@ -38,6 +38,12 @@
         <activity
             android:name=".ui.activity.Test.ANavigationView"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.AGlide"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.ARealm"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
