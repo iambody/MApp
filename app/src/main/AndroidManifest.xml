@@ -44,6 +44,12 @@
         <activity
             android:name=".ui.activity.Test.ARealm"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.ADrawerLayout"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.AToolBar"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

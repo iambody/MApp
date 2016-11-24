@@ -56,7 +56,7 @@
                 android:id="@+id/fragment_frist_navigationview_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="侧滑NavigationView" />
+                android:text="侧滑DrawerLayout+NavigationView" />
 
 
             <Button

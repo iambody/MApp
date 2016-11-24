@@ -7,5 +7,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ANavigationView" />
+        android:text="先测试DrawerLayout 测试" />
+
+    <Button
+        android:id="@+id/drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DrawerLayout 测试" />
+    <Button
+        android:id="@+id/drawerlayout_navigationview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NavigationView +DrawerLayout 的使用" />
+
+    <Button
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义ToolBar" />
 </LinearLayout>
