@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.m.app.R;
+import com.m.app.ui.activity.Test.ABottomNavigationBar;
 import com.m.app.ui.activity.Test.AFragmentNavigator;
 import com.m.app.ui.activity.Test.AGlide;
 import com.m.app.ui.activity.Test.ANavigationView;
@@ -45,6 +46,12 @@ public class FFrist extends FLazy {
     Button fragmentFristNavigationviewBt;
     @BindView(R.id.fragment_frist_glide_bt)
     Button fragmentFristGlideBt;
+    @BindView(R.id.fragment_frist_realm_bt)
+    Button fragmentFristRealmBt;
+    @BindView(R.id.fragment_frist_bottomnavigationbar_bt)
+    Button fragmentFristBottomnavigationbarBt;
+
+
 //被观察者********************
 
     Observable.OnSubscribe mySubscribe = new Observable.OnSubscribe<String>() {
@@ -73,9 +80,6 @@ public class FFrist extends FLazy {
 
         }
     };
-    @BindView(R.id.fragment_frist_realm_bt)
-    Button fragmentFristRealmBt;
-
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -120,7 +124,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_bottomnavigationbar_bt,R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -144,8 +148,12 @@ public class FFrist extends FLazy {
             case R.id.fragment_frist_realm_bt:
                 FBaseActivity.startActivity(new Intent(FBaseActivity, ARealm.class));
                 break;
+            case R.id.fragment_frist_bottomnavigationbar_bt://MD设计
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ABottomNavigationBar.class));
+                break;
         }
     }
+
 
 
 }

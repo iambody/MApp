@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.m.app.R;
 import com.m.app.ui.fragment.fmain.FFrist;
@@ -37,7 +38,7 @@ public class AMain extends ABase {
     private String[] mTitles = new String[]{"首页", "专区", "我的"};
     private Fragment Fragment_Frist, Fragment_Second, Fragment_three;
     private List<Fragment> FragmentLs = new ArrayList<>();
-
+    List<Integer>ss=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,9 @@ public class AMain extends ABase {
     }
 
     private void IBase() {
+        ss.add(R.mipmap.tab1_pr);
+        ss.add(R.mipmap.tab2_nor);
+        ss.add(R.mipmap.tab4_nor);
         Fragment_Frist = new FFrist();
         Fragment_Second = new FSecond();
         Fragment_three = new FThree();
@@ -64,6 +68,55 @@ public class AMain extends ABase {
         maitabTablayout.getTabAt(1).setCustomView(getTabView(1));
         maitabTablayout.getTabAt(2).setCustomView(getTabView(2));
 
+//        maitabTablayout.getTabAt(0).setIcon(getResources().getDrawable(R.mipmap.tab1_pr));
+//        maitabTablayout.getTabAt(1).setIcon(getResources().getDrawable(R.mipmap.tab2_nor));
+//        maitabTablayout.getTabAt(2).setIcon(getResources().getDrawable(R.mipmap.tab4_nor));
+
+
+        maitabTablayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab == maitabTablayout.getTabAt(0)) {
+//                    maitabTablayout.getTabAt(0).setIcon(getResources().getDrawable(R.mipmap.tab1_pr));
+                    ( (ImageView) maitabTablayout.getTabAt(0).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab1_pr);
+//                    mViewPager.setCurrentItem(0);
+                } else if (tab == maitabTablayout.getTabAt(1)) {
+//                    maitabTablayout.getTabAt(1).setIcon(getResources().getDrawable(R.mipmap.tab2_pr));
+                    ( (ImageView) maitabTablayout.getTabAt(1).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab2_pr);
+//
+                } else if (tab == maitabTablayout.getTabAt(2)) {
+//                    maitabTablayout.getTabAt(2).setIcon(getResources().getDrawable(R.mipmap.tab4_pr));
+                    ( (ImageView) maitabTablayout.getTabAt(2).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab4_pr);
+//
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                if (tab == maitabTablayout.getTabAt(0)) {
+//                    maitabTablayout.getTabAt(0).setIcon(getResources().getDrawable(R.mipmap.tab1_nor));
+                    ( (ImageView) maitabTablayout.getTabAt(0).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab1_nor);
+//
+//                    mViewPager.setCurrentItem(0);
+                } else if (tab == maitabTablayout.getTabAt(1)) {
+//                    maitabTablayout.getTabAt(1).setIcon(getResources().getDrawable(R.mipmap.tab2_nor));
+                    ( (ImageView) maitabTablayout.getTabAt(1).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab2_nor);
+//
+                } else if (tab == maitabTablayout.getTabAt(2)) {
+//                    maitabTablayout.getTabAt(2).setIcon(getResources().getDrawable(R.mipmap.tab4_nor));
+                    ( (ImageView) maitabTablayout.getTabAt(2).getCustomView().findViewById(R.id.comment_tab_iv)).setImageResource(R.mipmap.tab4_nor);
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 
@@ -91,11 +144,13 @@ public class AMain extends ABase {
         }
     }
 
+
     public View getTabView(int position) {
         View v = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         TextView tv = (TextView) v.findViewById(R.id.comment_tab_txt);
         tv.setText(mTitles[position]);
         ImageView img = (ImageView) v.findViewById(R.id.comment_tab_iv);
+        img.setImageResource(ss.get(position));
         //img.setImageResource(imageResId[position]);
         return v;
     }

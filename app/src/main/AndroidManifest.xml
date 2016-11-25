@@ -50,6 +50,9 @@
         <activity
             android:name=".ui.activity.Test.AToolBar"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".ui.activity.Test.ABottomNavigationBar"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

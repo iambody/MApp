@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/comment_tab_iv"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/tab2_nor" />
 
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-android:textSize="18dp"
-        android:text="tab"/>
+        android:text="tab"
+        android:textSize="14dp" />
 
 </LinearLayout>
