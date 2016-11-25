@@ -81,7 +81,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="底部切换MD设计--BottomNavigationBar" />
-
+            <Button
+                android:id="@+id/fragment_frist_floatingactionbutton_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FloatingActionButton  + CoordinatorLayout+Snackbar" />
 
         </LinearLayout>
     </ScrollView>
