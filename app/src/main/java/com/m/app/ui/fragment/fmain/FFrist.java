@@ -1,7 +1,11 @@
 package com.m.app.ui.fragment.fmain;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +14,7 @@ import android.widget.Toast;
 
 import com.m.app.R;
 import com.m.app.ui.activity.Test.ABottomNavigationBar;
+import com.m.app.ui.activity.Test.AFileManger;
 import com.m.app.ui.activity.Test.AFragmentNavigator;
 import com.m.app.ui.activity.Test.AGlide;
 import com.m.app.ui.activity.Test.ANavigationView;
@@ -18,6 +23,9 @@ import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
 import com.m.app.ui.fragment.FLazy;
+
+import java.io.File;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -80,6 +88,14 @@ public class FFrist extends FLazy {
 
         }
     };
+    @BindView(R.id.fragment_frist_blockcanary_bt)
+    Button fragmentFristBlockcanaryBt;
+    @BindView(R.id.fragment_frist_floatingactionbutton_bt)
+    Button fragmentFristFloatingactionbuttonBt;
+    @BindView(R.id.fragment_frist_muiltshare_bt)
+    Button fragmentFristMuiltshareBt;
+    @BindView(R.id.fragment_frist_filemanger_bt)
+    Button fragmentFristFilemangerBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -124,7 +140,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_bottomnavigationbar_bt,R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_filemanger_bt,R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -151,7 +167,60 @@ public class FFrist extends FLazy {
             case R.id.fragment_frist_bottomnavigationbar_bt://MD设计
                 FBaseActivity.startActivity(new Intent(FBaseActivity, ABottomNavigationBar.class));
                 break;
+            case R.id.fragment_frist_muiltshare_bt://多图分享
+                File sdCard = Environment.getExternalStorageDirectory();
+                File directory_pictures = new File(sdCard ,"aaccccc/s");
+                Log.i("filetest", "directory_pictures=" + directory_pictures);
+                sharemuil(directory_pictures);
+                break;
+            case R.id.fragment_frist_filemanger_bt://文件夹管理
+                FBaseActivity.startActivity(new Intent(FBaseActivity, AFileManger.class));
+                break;
         }
+    }
+
+    private void sharemuil(File... files) {
+        Intent intent = new Intent();
+        ComponentName comp = new ComponentName("com.tencent.mm",
+                "com.tencent.mm.ui.tools.ShareToTimeLineUI");
+        intent.setComponent(comp);
+        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/*");
+
+        ArrayList<Uri> imageUris = new ArrayList<Uri>();
+
+        for (File f : files) {
+            File[] filels = f.listFiles();
+            for (int i = 0; i <filels.length; i++) {
+                File file = filels[i];
+                if (checkIsImageFile(file.getPath())) {
+                    imageUris.add(Uri.fromFile(file));
+                }
+            }
+
+        }
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+        intent.putExtra("Kdescription", "wwwwwwwwwwwwwwwwwwww");
+        startActivity(intent);
+    }
+    /**
+     * 检查扩展名，得到图片格式的文件
+     * @param fName  文件名
+     * @return
+     */
+
+    private boolean checkIsImageFile(String fName) {
+        boolean isImageFile = false;
+        // 获取扩展名
+        String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
+                fName.length()).toLowerCase();
+        if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
+                || FileEnd.equals("jpeg")|| FileEnd.equals("bmp") ) {
+            isImageFile = true;
+        } else {
+            isImageFile = false;
+        }
+        return isImageFile;
     }
 
 
