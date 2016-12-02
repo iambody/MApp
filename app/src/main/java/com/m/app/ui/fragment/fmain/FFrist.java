@@ -23,6 +23,7 @@ import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
 import com.m.app.ui.fragment.FLazy;
+import com.m.app.ui.utils.DownFileUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -96,6 +97,8 @@ public class FFrist extends FLazy {
     Button fragmentFristMuiltshareBt;
     @BindView(R.id.fragment_frist_filemanger_bt)
     Button fragmentFristFilemangerBt;
+    @BindView(R.id.fragment_frist_download_bt)
+    Button fragmentFristDownloadBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -140,7 +143,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_filemanger_bt,R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -169,12 +172,37 @@ public class FFrist extends FLazy {
                 break;
             case R.id.fragment_frist_muiltshare_bt://多图分享
                 File sdCard = Environment.getExternalStorageDirectory();
-                File directory_pictures = new File(sdCard ,"aaccccc/s");
+//                File directory_pictures = new File(sdCard, "aaccccc/s");
+
+                File directory_pictures = new File(sdCard + "/aaaadownload/");
+                if (!directory_pictures.exists())
+                    directory_pictures.mkdirs();
+
                 Log.i("filetest", "directory_pictures=" + directory_pictures);
                 sharemuil(directory_pictures);
                 break;
             case R.id.fragment_frist_filemanger_bt://文件夹管理
                 FBaseActivity.startActivity(new Intent(FBaseActivity, AFileManger.class));
+                break;
+            case R.id.fragment_frist_download_bt://下载图片到文件夹
+                DownFileUtils dd = new DownFileUtils();
+                File sdCards = Environment.getExternalStorageDirectory();
+//                File directory_picturess = new File(sdCards, "abb/");
+//                final File filepath = new File(savePath + File.separator + "MyDownLoadText" + File.separator + downLoadUrl);//仅创建路径的File对象
+//                File aas = new File(sdCards+ "/aaaadownload/");
+//                if(aas.exists()){
+//                    aas.delete();
+//                }
+                File test = new File(sdCards+"/aaaadownload"  );
+                if(test.exists()){
+                    RecursionDeleteFile(test);
+                }
+                File aaaa = new File(sdCards, "/aaaadownload/" + "photo3.jpg");
+
+
+//                Log.i("filetest", "下载传入的file路径=" + aaaa.getPath());
+//                Log.i("filetest", checkIsImageFile("http://fs.v-town.cc/photo_ZLul9y5C1CbVfxSlQ83TNY2fMu7RjdIN.jpg")?"是图片":"不是图片"  );
+                dd.xUtilsHttpUtilDonLoadFile("http://fs.v-town.cc/photo_R7JdzAnzcTEYckK9LlHAIkK477awAHnq",aaaa.getPath(),aaaa,"122");
                 break;
         }
     }
@@ -191,7 +219,7 @@ public class FFrist extends FLazy {
 
         for (File f : files) {
             File[] filels = f.listFiles();
-            for (int i = 0; i <filels.length; i++) {
+            for (int i = 0; i < filels.length; i++) {
                 File file = filels[i];
                 if (checkIsImageFile(file.getPath())) {
                     imageUris.add(Uri.fromFile(file));
@@ -203,9 +231,11 @@ public class FFrist extends FLazy {
         intent.putExtra("Kdescription", "wwwwwwwwwwwwwwwwwwww");
         startActivity(intent);
     }
+
     /**
      * 检查扩展名，得到图片格式的文件
-     * @param fName  文件名
+     *
+     * @param fName 文件名
      * @return
      */
 
@@ -215,7 +245,7 @@ public class FFrist extends FLazy {
         String FileEnd = fName.substring(fName.lastIndexOf(".") + 1,
                 fName.length()).toLowerCase();
         if (FileEnd.equals("jpg") || FileEnd.equals("png") || FileEnd.equals("gif")
-                || FileEnd.equals("jpeg")|| FileEnd.equals("bmp") ) {
+                || FileEnd.equals("jpeg") || FileEnd.equals("bmp")) {
             isImageFile = true;
         } else {
             isImageFile = false;
@@ -224,5 +254,22 @@ public class FFrist extends FLazy {
     }
 
 
+    public void RecursionDeleteFile(File file){
+        if(file.isFile()){
+            file.delete();
+            return;
+        }
+        if(file.isDirectory()){
+            File[] childFile = file.listFiles();
+            if(childFile == null || childFile.length == 0){
+                file.delete();
+                return;
+            }
+            for(File f : childFile){
+                RecursionDeleteFile(f);
+            }
+            file.delete();
+        }
+    }
 
 }

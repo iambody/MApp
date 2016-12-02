@@ -92,10 +92,15 @@
                 android:layout_height="wrap_content"
                 android:text="多图分享" />
             <Button
-                android:id="@+id/fragment_frist_filemanger_bt"
+            android:id="@+id/fragment_frist_filemanger_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文件夹管理" />
+            <Button
+                android:id="@+id/fragment_frist_download_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="文件夹管理" />
+                android:text="XUtils下载图片到sd卡" />
         </LinearLayout>
     </ScrollView>
 
