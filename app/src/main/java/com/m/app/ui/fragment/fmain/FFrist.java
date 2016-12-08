@@ -228,7 +228,7 @@ public class FFrist extends FLazy {
 
         }
         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
-        intent.putExtra("Kdescription", "wwwwwwwwwwwwwwwwwwww");
+        intent.putExtra("Kdescription", "微糖商城");
         startActivity(intent);
     }
 
