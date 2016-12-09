@@ -22,6 +22,7 @@ import com.m.app.ui.activity.Test.ARealm;
 import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
+import com.m.app.ui.activity.Test.AValueanimator;
 import com.m.app.ui.fragment.FLazy;
 import com.m.app.ui.utils.DownFileUtils;
 
@@ -99,6 +100,8 @@ public class FFrist extends FLazy {
     Button fragmentFristFilemangerBt;
     @BindView(R.id.fragment_frist_download_bt)
     Button fragmentFristDownloadBt;
+    @BindView(R.id.fragment_frist_valueanimator_bt)
+    Button fragmentFristValueanimatorBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -143,7 +146,7 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_valueanimator_bt,R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
             case R.id.fragment_frist_rxjava_bt:
@@ -193,8 +196,8 @@ public class FFrist extends FLazy {
 //                if(aas.exists()){
 //                    aas.delete();
 //                }
-                File test = new File(sdCards+"/aaaadownload"  );
-                if(test.exists()){
+                File test = new File(sdCards + "/aaaadownload");
+                if (test.exists()) {
                     RecursionDeleteFile(test);
                 }
                 File aaaa = new File(sdCards, "/aaaadownload/" + "photo3.jpg");
@@ -202,7 +205,10 @@ public class FFrist extends FLazy {
 
 //                Log.i("filetest", "下载传入的file路径=" + aaaa.getPath());
 //                Log.i("filetest", checkIsImageFile("http://fs.v-town.cc/photo_ZLul9y5C1CbVfxSlQ83TNY2fMu7RjdIN.jpg")?"是图片":"不是图片"  );
-                dd.xUtilsHttpUtilDonLoadFile("http://fs.v-town.cc/photo_R7JdzAnzcTEYckK9LlHAIkK477awAHnq",aaaa.getPath(),aaaa,"122");
+                dd.xUtilsHttpUtilDonLoadFile("http://fs.v-town.cc/photo_R7JdzAnzcTEYckK9LlHAIkK477awAHnq", aaaa.getPath(), aaaa, "122");
+                break;
+            case R.id.fragment_frist_valueanimator_bt://属性动画
+                FBaseActivity.startActivity(new Intent(FBaseActivity, AValueanimator.class));
                 break;
         }
     }
@@ -254,22 +260,25 @@ public class FFrist extends FLazy {
     }
 
 
-    public void RecursionDeleteFile(File file){
-        if(file.isFile()){
+    public void RecursionDeleteFile(File file) {
+        if (file.isFile()) {
             file.delete();
             return;
         }
-        if(file.isDirectory()){
+        if (file.isDirectory()) {
             File[] childFile = file.listFiles();
-            if(childFile == null || childFile.length == 0){
+            if (childFile == null || childFile.length == 0) {
                 file.delete();
                 return;
             }
-            for(File f : childFile){
+            for (File f : childFile) {
                 RecursionDeleteFile(f);
             }
             file.delete();
         }
     }
+
+
+
 
 }
