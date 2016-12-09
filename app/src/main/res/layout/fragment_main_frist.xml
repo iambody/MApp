@@ -109,7 +109,7 @@
                 android:id="@+id/fragment_frist_valueanimator_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="属性动画ValueAnimator"/>
+                android:text="属性动画ValueAnimator------typeevaluator"/>
         </LinearLayout>
     </ScrollView>
 
