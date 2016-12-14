@@ -102,6 +102,7 @@
                 android:layout_height="wrap_content"
                 android:text="XUtils下载图片到sd卡" />
             <Button
+                android:id="@+id/fragment_vido_play_bt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="三方视频播放器Vitamio"/>

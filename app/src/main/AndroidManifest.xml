@@ -58,6 +58,16 @@
         <activity
             android:name=".ui.activity.Test.AValueanimator"
             android:launchMode="singleTask" />
+
+        <activity
+            android:name=".ui.activity.Test.AVitamoPlay"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="io.vov.vitamio.activity.InitActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>

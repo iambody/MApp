@@ -23,6 +23,7 @@ import com.m.app.ui.activity.Test.ASwipeToLayout;
 import com.m.app.ui.activity.Test.ATestRetorofit;
 import com.m.app.ui.activity.Test.ATestRxJava;
 import com.m.app.ui.activity.Test.AValueanimator;
+import com.m.app.ui.activity.Test.AVitamoPlay;
 import com.m.app.ui.fragment.FLazy;
 import com.m.app.ui.utils.DownFileUtils;
 
@@ -102,6 +103,8 @@ public class FFrist extends FLazy {
     Button fragmentFristDownloadBt;
     @BindView(R.id.fragment_frist_valueanimator_bt)
     Button fragmentFristValueanimatorBt;
+    @BindView(R.id.fragment_vido_play_bt)
+    Button fragmentVidoPlayBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -146,9 +149,12 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_frist_valueanimator_bt,R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_vido_play_bt, R.id.fragment_frist_valueanimator_bt, R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
+            case R.id.fragment_vido_play_bt://vitamo播放框架
+                FBaseActivity.startActivity(new Intent(FBaseActivity, AVitamoPlay.class));
+                break;
             case R.id.fragment_frist_rxjava_bt:
                 FBaseActivity.startActivity(new Intent(FBaseActivity, ATestRxJava.class));
                 break;
@@ -277,8 +283,6 @@ public class FFrist extends FLazy {
             file.delete();
         }
     }
-
-
 
 
 }
