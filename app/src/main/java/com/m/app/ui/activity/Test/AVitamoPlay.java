@@ -35,7 +35,7 @@ public class AVitamoPlay extends ABase implements MediaPlayer.OnPreparedListener
         if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this)){
             Toast.makeText(this,"初始化失败", Toast.LENGTH_LONG).show();
             return;}
-        vvMain.setVideoURI(Uri.parse("http://fs.v-town.cc/10014952_14815225533262163198.mov"));//设置播放地址
+        vvMain.setVideoURI(Uri.parse("http://qiubai-video.qiushibaike.com/91B2TEYP9D300XXH_3g.mp4"));//设置播放地址
         mediaController=new MediaController(this);
         vvMain.setMediaController(mediaController);
 
