@@ -5,4 +5,8 @@
     <dimen name="ui_10_dip">10dp</dimen>
     <dimen name="ui_4_dip">4dp</dimen>
     <dimen name="ui_12_dip">12dp</dimen>
+    <dimen name="ui_1_dip">1dp</dimen>
+    <dimen name="ui_2_dip">2dp</dimen>
+    <dimen name="ui_3_dip">3dp</dimen>
+
 </resources>

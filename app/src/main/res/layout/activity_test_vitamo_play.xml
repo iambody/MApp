@@ -17,6 +17,6 @@
 
     <io.vov.vitamio.widget.VideoView
         android:id="@+id/vv_main"
-        android:layout_width="400dp"
-        android:layout_height="400dp" />
+        android:layout_width="200dp"
+        android:layout_height="200dp" />
 </LinearLayout>

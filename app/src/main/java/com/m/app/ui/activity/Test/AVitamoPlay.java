@@ -48,7 +48,7 @@ public class AVitamoPlay extends ABase implements MediaPlayer.OnPreparedListener
 
     @OnClick(R.id.myvido_play)
     public void onClick() {
-//        vvMain.start();//开始播放
+        vvMain.start();//开始播放
     }
 
     @Override

@@ -58,7 +58,9 @@
         <activity
             android:name=".ui.activity.Test.AValueanimator"
             android:launchMode="singleTask" />
-
+        <activity
+            android:name=".ui.activity.Test.ALayerDrawable"
+            android:launchMode="singleTask" />
         <activity
             android:name=".ui.activity.Test.AVitamoPlay"
             android:launchMode="singleTask" />

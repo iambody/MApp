@@ -17,6 +17,7 @@ import com.m.app.ui.activity.Test.ABottomNavigationBar;
 import com.m.app.ui.activity.Test.AFileManger;
 import com.m.app.ui.activity.Test.AFragmentNavigator;
 import com.m.app.ui.activity.Test.AGlide;
+import com.m.app.ui.activity.Test.ALayerDrawable;
 import com.m.app.ui.activity.Test.ANavigationView;
 import com.m.app.ui.activity.Test.ARealm;
 import com.m.app.ui.activity.Test.ASwipeToLayout;
@@ -105,6 +106,8 @@ public class FFrist extends FLazy {
     Button fragmentFristValueanimatorBt;
     @BindView(R.id.fragment_vido_play_bt)
     Button fragmentVidoPlayBt;
+    @BindView(R.id.fragment_frist_LayerDrawable_bt)
+    Button fragmentFristLayerDrawableBt;
 
     @Override
     protected void create(Bundle Mybundle) {
@@ -149,9 +152,12 @@ public class FFrist extends FLazy {
     }
 
 
-    @OnClick({R.id.fragment_vido_play_bt, R.id.fragment_frist_valueanimator_bt, R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
+    @OnClick({R.id.fragment_frist_LayerDrawable_bt,R.id.fragment_vido_play_bt, R.id.fragment_frist_valueanimator_bt, R.id.fragment_frist_download_bt, R.id.fragment_frist_filemanger_bt, R.id.fragment_frist_muiltshare_bt, R.id.fragment_frist_bottomnavigationbar_bt, R.id.fragment_frist_realm_bt, R.id.fragment_frist_glide_bt, R.id.fragment_frist_navigationview_bt, R.id.fragment_frist_rxjava_bt, R.id.fragment_frist_rxjava_net_bt, R.id.fragment_frist_qiehuan_net_bt, R.id.fragment_frist_fragmentnavigator_bt})
     public void onClick(View V) {
         switch (V.getId()) {
+            case R.id.fragment_frist_LayerDrawable_bt://
+                FBaseActivity.startActivity(new Intent(FBaseActivity, ALayerDrawable.class));
+                break;
             case R.id.fragment_vido_play_bt://vitamo播放框架
                 FBaseActivity.startActivity(new Intent(FBaseActivity, AVitamoPlay.class));
                 break;
@@ -283,6 +289,8 @@ public class FFrist extends FLazy {
             file.delete();
         }
     }
+
+
 
 
 }
