@@ -4,7 +4,7 @@ public class ContentModel {
 
 	private int imageView;
 	private String text;
-	
+	private tsns.DataBean f;
 	public ContentModel(int imageView, String text) {
 		super();
 		this.imageView = imageView;
